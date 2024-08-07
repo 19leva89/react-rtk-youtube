@@ -16,6 +16,7 @@ export const updateVideo = async (req, res, next) => {
 	try {
 		const video = await Video.findById(req.params.id);
 		if (!video) return next(createError(404, "Video not found!"));
+
 		if (req.user.id === video.userId) {
 			const updatedVideo = await Video.findByIdAndUpdate(
 				req.params.id,
@@ -37,6 +38,7 @@ export const deleteVideo = async (req, res, next) => {
 	try {
 		const video = await Video.findById(req.params.id);
 		if (!video) return next(createError(404, "Video not found!"));
+
 		if (req.user.id === video.userId) {
 			await Video.findByIdAndDelete(req.params.id);
 			res.status(200).json("The video has been deleted.");
@@ -104,9 +106,16 @@ export const sub = async (req, res, next) => {
 };
 
 export const getByTag = async (req, res, next) => {
-	const tags = req.query.tags.split(",");
+
 	try {
+		if (!req.query.tags) {
+			return res.status(400).json({ error: "Missing 'tags' query parameter." });
+		}
+
+		const tags = req.query.tags.split(",");
+
 		const videos = await Video.find({ tags: { $in: tags } }).limit(20);
+
 		res.status(200).json(videos);
 	} catch (err) {
 		next(err);
