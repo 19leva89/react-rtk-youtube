@@ -2,8 +2,9 @@ This project contains the following technologies:
 - React 18
 - React Router 6 (navigation)
 - Redux Toolkit (data storage)
+- Redux Persist (autosave to local storage)
 - Axios (sending request to backend)
-- Firebase (content filling)
+- Firebase (Google Auth button)
 - TimeAgo (date/time manipulation)
 - Web Vitals (stylization)
 

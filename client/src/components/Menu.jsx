@@ -1,6 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
+import { useSelector } from "react-redux";
+
 import styled from "styled-components";
 import DimaTube from "../img/logo.png";
 import HomeIcon from "@mui/icons-material/Home";
@@ -87,6 +89,8 @@ const Title = styled.h2`
 `;
 
 const Menu = ({ darkMode, setDarkMode }) => {
+	const { currentUser } = useSelector((state) => state.user);
+
 	return (
 		<Container>
 			<Wrapper>
@@ -130,17 +134,20 @@ const Menu = ({ darkMode, setDarkMode }) => {
 
 				<Hr />
 
-				<Login>
-					Sign in to like videos, comment, and subscribe.
-					<Link to="signin" style={{ textDecoration: "none" }}>
-						<Button>
-							<AccountCircleOutlinedIcon />
-							SIGN IN
-						</Button>
-					</Link>
-				</Login>
-
-				<Hr />
+				{!currentUser &&
+					<>
+						<Login>
+							Sign in to like videos, comment, and subscribe.
+							<Link to="signin" style={{ textDecoration: "none" }}>
+								<Button>
+									<AccountCircleOutlinedIcon />
+									SIGN IN
+								</Button>
+							</Link>
+						</Login>
+						<Hr />
+					</>
+				}
 
 				<Title>BEST OF DIMATUBE</Title>
 
