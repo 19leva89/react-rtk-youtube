@@ -1,10 +1,12 @@
 {
-  "name": "server",
+  "name": "express-youtube",
   "version": "1.0.0",
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "start": "nodemon index.js"
+    "start": "nodemon index.js",
+		"client": "npm start --prefix ./client",
+    "all": "concurrently \"npm run start\" \"npm run client\""
   },
   "keywords": [],
   "author": "",
@@ -15,7 +17,10 @@
     "dotenv": "^16.4.5",
     "express": "^4.18.2",
     "jsonwebtoken": "^9.0.2",
-    "mongoose": "^6.4.3",
+    "mongoose": "^6.4.3"
+  },
+	"devDependencies": {
+    "concurrently": "^8.2.2",
     "nodemon": "^3.1.4"
   },
   "description": ""

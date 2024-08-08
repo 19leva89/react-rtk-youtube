@@ -4,6 +4,7 @@ This project contains the following technologies:
 - Redux Toolkit (data storage)
 - Axios (sending request to backend)
 - Firebase (content filling)
+- TimeAgo (date/time manipulation)
 - Web Vitals (stylization)
 
 Server:
