@@ -37,6 +37,7 @@ const Search = styled.div`
   padding: 5px;
   border: 1px solid #ccc;
   border-radius: 3px;
+	color: ${({ theme }) => theme.text};
 `;
 
 const Input = styled.input`
@@ -84,6 +85,7 @@ const Navbar = () => {
 		<>
 			<Container>
 				<Wrapper>
+
 					<Search>
 						<Input
 							placeholder="Search"
@@ -91,6 +93,7 @@ const Navbar = () => {
 						/>
 						<SearchOutlinedIcon onClick={() => navigate(`/search?q=${q}`)} />
 					</Search>
+
 					{currentUser ? (
 						<User>
 							<VideoCallOutlinedIcon onClick={() => setOpen(true)} />
@@ -105,6 +108,7 @@ const Navbar = () => {
 							</Button>
 						</Link>
 					)}
+
 				</Wrapper>
 			</Container>
 			{open && <Upload setOpen={setOpen} />}
